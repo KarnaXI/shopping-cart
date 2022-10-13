@@ -6,9 +6,13 @@ import Header from './Header';
 import ProductsList from "./ProductsList";
 import Home from './Home';
 import Cart from './Cart';
+import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 
 function App() {
   const [cartItems, setCartItems] = useState();
+  const [totalCartItems, setTotalCartItems] = useState(0);
+
+  const [categorizedProducts, setCategorizedProducts] = useState([...ProductsList]);
 
   const [value, setValue] = useState({
     1: 0,
@@ -24,9 +28,13 @@ function App() {
   });
 
   useEffect(()=>{
-    // console.log(value);
-    // console.log(cartItems);
-  }, [value, cartItems]);
+    if(cartItems){
+      const cartValues = Object.values(cartItems);
+      setTotalCartItems(cartValues.reduce((accumulator, theValue) => {
+        return accumulator + theValue;
+      }, 0))
+    }
+  }, [cartItems]);
 
   const handleClick = (id) => {
     let quantityToAdd = (value[id]);
@@ -42,14 +50,28 @@ function App() {
     setValue({...value,[e.target.id]: newValue});
   }
 
+  const renderFilteredItems = (category) => {
+    if(category === "ALL"){
+      setCategorizedProducts(ProductsList);
+    }
+    else{
+      setCategorizedProducts(ProductsList.filter(product => product.type === category));
+    }
+
+  }
+
   return (
+    <Router>
     <div className="App">
-      <Header/>
-      <Home cartItems={cartItems} productsList={ProductsList} handleClick={handleClick} handleChange={handleChange} value={value}/>
-      <Cart productsList={ProductsList} items={cartItems}/>
-      
+      <Header items={totalCartItems}/>
+      <Routes>
+        <Route exact path="/" element={<Home cartItems={cartItems} filterProducts={renderFilteredItems} productsList={categorizedProducts} handleClick={handleClick} handleChange={handleChange} value={value}/>} />
+        <Route exact path="/cart" element={<Cart productsList={ProductsList} items={cartItems}/>} />
+      </Routes>
+
       <Footer/>
     </div>
+    </Router>
 
   );
 }

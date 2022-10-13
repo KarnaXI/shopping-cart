@@ -1,15 +1,17 @@
 import Cards from "./Cards";
 
-const Home = ({productsList, value, handleClick, handleChange}) => {
+const Home = ({productsList, value, handleClick, handleChange, filterProducts}) => {
     const products = productsList;
 
     return(
         <div className="app-wrapper">
-            <h1>Products</h1>
+            
             <div className="sidebar">
-                <p>Sofas</p>
-                <p>Beds</p>
-                <p>Tables</p>
+                <h2>Products</h2>
+                <p onClick={() => filterProducts("SOFA")}>Sofas</p>
+                <p onClick={() => filterProducts("BED")}>Beds</p>
+                <p onClick={() => filterProducts("TABLE")}>Tables</p>
+                <p onClick={() => filterProducts("ALL")}>All</p>
             </div>
             <Cards products={products} handleClick={handleClick} handleChange={handleChange} value={value} />
       </div>

@@ -1,11 +1,26 @@
-// import { Link } from "react-router-dom";
-const Header = () => {
+import { Link } from "react-router-dom";
+const Header = ({items}) => {
     return (
         <header>
-            <nav>
-                {/* <Link to="/">Home</Link> |{" "}
-                <Link to="/cart">Cart</Link> */}
-            </nav>
+
+            <div className="header-container">
+                <div className="header-wrapper">
+                    <div className="logo"><h1>Asam's Furniture Store</h1></div>
+                    <nav>
+                        <Link to="/">Home</Link>
+                        <Link to="/cart">Cart</Link>
+                    </nav>
+                    <div className="cart-icon-container">
+                        <Link to="/cart">
+                        <p className="total-cart-items">{items}</p>
+                        <img className="cart-icon" src={require('./images/cart-icon.png')} alt="cart icon"/>
+                        </Link>
+                        <p className="cart-text">CART</p>
+
+                    </div>
+                </div>
+            </div>
+
         </header>
     )
 }
