@@ -1,12 +1,13 @@
-import Footer from "./Footer";
-import Header from "./Header";
 
-const Cart = () => {
+const Cart = ({productsList, items}) => {
+    // console.log(items);
+    // console.log(typeof(productsList));
+
+
     return (
         <div>
-            <Header/>
-            <h1>Hello from Profile</h1>
-            <Footer/>
+            { items ? 
+            productsList.map((product) =>(console.log(product))) : null }
         </div>
     )
 }
