@@ -1,4 +1,4 @@
-const Cart = ({productsList, items, handleChange}) => {
+const Cart = ({productsList, items, handleChange, totalCartItems}) => {
 
     function filterProducts(){
         if(items){
@@ -14,28 +14,31 @@ const Cart = ({productsList, items, handleChange}) => {
     }
 
     function getCartTotal(){
-        let cartTotal = filterProducts().map( product => product.quantity * product.price);
-        cartTotal = (cartTotal.reduce((previousValue, currentValue) => previousValue + currentValue));
-        if (cartTotal > 10000 && cartTotal < 100000){
-            cartTotal = cartTotal.toString()
-            cartTotal = cartTotal.slice(0, 2) + "," + cartTotal.slice(2);
+        if(filterProducts()){
+            let cartTotal = filterProducts().map( product => product.quantity * product.price);
+            if (cartTotal.length > 0){
+                cartTotal = (cartTotal.reduce((previousValue, currentValue) => previousValue + currentValue));
+                if (cartTotal > 10000 && cartTotal < 100000){
+                    cartTotal = cartTotal.toString()
+                    cartTotal = cartTotal.slice(0, 2) + "," + cartTotal.slice(2);
+                }
+                if (cartTotal > 100000 && cartTotal < 1000000){
+                    cartTotal = cartTotal.toString()
+                    cartTotal = cartTotal.slice(0, 3) + "," + cartTotal.slice(3);
+                }
+                if (cartTotal > 1000000){
+                    cartTotal = cartTotal.toString()
+                    cartTotal = cartTotal.slice(0, 1) + "," + cartTotal.slice(1, 4) + "," + cartTotal.slice(4);
+                }
+            }
+            return cartTotal;
         }
-        if (cartTotal > 100000 && cartTotal < 1000000){
-            cartTotal = cartTotal.toString()
-            cartTotal = cartTotal.slice(0, 3) + "," + cartTotal.slice(3);
-        }
-        if (cartTotal > 1000000){
-            cartTotal = cartTotal.toString()
-            cartTotal = cartTotal.slice(0, 1) + "," + cartTotal.slice(1, 4) + "," + cartTotal.slice(4);
-        }
-        
-        return cartTotal
     }
 
     return ( 
         <div className="cart-container">
             <h1>My Cart</h1>
-            {!items && <div className="cart-empty">No items added to cart</div>}
+            {!totalCartItems > 0 && <div className="cart-empty">No items added to cart</div>}
             <table className="cart-table">
                 <thead>
                     <tr className="cart-header">
@@ -61,7 +64,7 @@ const Cart = ({productsList, items, handleChange}) => {
             
                 </tbody>
             </table>
-            {items && <div className="cart-total" key={5184}>
+            {totalCartItems > 0 && <div className="cart-total" key={5184}>
                Total: ${getCartTotal()}
                 </div>}
     

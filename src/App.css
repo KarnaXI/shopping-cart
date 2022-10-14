@@ -53,7 +53,7 @@ p {
 
 .header-container {
     padding: 2rem;
-    margin-bottom: 4rem;
+    margin-bottom: 6rem;
     background-color: #282828;
     color:#fff;
     display: flex;
@@ -229,6 +229,7 @@ button.add-to-cart:hover {
     padding: 2rem;
     margin: auto;
     margin-bottom: 4rem;
+    min-height: 49vh;
 }
 
 .cart-container h1 {
@@ -287,10 +288,79 @@ th.cart-third-column {
     width: 250px;
 }
 
-
 .cart-total {
     margin-left: auto;
     padding: 2rem;
     border: solid 1px #dee1e3;
     border-top: none;
+}
+
+footer {
+    margin-top: 10rem;
+   
+}
+
+footer .header-container {
+    margin-bottom: 0;
+}
+
+@media screen and (max-width:1500px) {
+    .cart-container{
+        min-height: 43vh;
+    }
+    
+}
+
+@media screen and (max-width:900px) {
+    .cart-quantity {
+        width: 40px;
+    }
+    .cart-container{
+        overflow-x: scroll;
+    }
+}
+
+@media screen and (max-width: 700px) {
+    .app-wrapper{
+        flex-direction: column;
+    }
+    .sidebar{
+        margin-bottom: 4rem;
+        align-self: center;
+        align-items: center;
+    }
+    .sidebar h2 {
+        width: 100%;
+        text-align: center;
+    }
+    .products-container{
+        justify-content: center;
+        gap: 0;
+    }
+    .card-item{
+        flex-basis: 90%;
+        margin-bottom: 3rem;
+    }
+    .header-wrapper{
+        flex-direction: column;
+    }
+    .header-wrapper > * {
+        margin-bottom: 3rem;
+    }
+    .header-wrapper .cart-icon-container {
+        margin-bottom: 0rem;
+    }
+    .logo{
+        text-align: center;
+    }
+    .sidebar{
+        width: 80%;
+    }
+    .cart-container{
+        min-height: 30vh;
+    }
+    .cart-total{
+        width: fit-content;
+        margin-left: auto;
+    }
 }

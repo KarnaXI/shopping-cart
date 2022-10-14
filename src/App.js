@@ -73,11 +73,11 @@ function App() {
 
         <Route exact path="/" element={<Home cartItems={cartItems} filterProducts={renderFilteredItems} productsList={categorizedProducts} handleClick={handleClick} handleChange={handleChange} value={value}/>} />
        
-        <Route exact path="/cart" element={<Cart productsList={ProductsList} items={cartItems} handleChange={handleChangeCart} />} />
+        <Route exact path="/cart" element={<Cart productsList={ProductsList} items={cartItems} handleChange={handleChangeCart} totalCartItems={totalCartItems} />} />
 
       </Routes>
 
-      <Footer/>
+      <Footer items={totalCartItems}/>
     </div>
     </Router>
 
