@@ -5,7 +5,7 @@ const Header = ({items}) => {
 
             <div className="header-container">
                 <div className="header-wrapper">
-                    <div className="logo"><h1>Asam's Furniture Store</h1></div>
+                    <div className="logo"><Link to="/"><h1>Asam's Furniture Store</h1></Link></div>
                     <nav>
                         <Link to="/">Home</Link>
                         <Link to="/cart">Cart</Link>

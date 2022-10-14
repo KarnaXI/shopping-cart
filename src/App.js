@@ -50,6 +50,11 @@ function App() {
     setValue({...value,[e.target.id]: newValue});
   }
 
+  const handleChangeCart = (e) => {
+    const newValue = Number(e.target.value.replace(/\D/g, ''));
+    setCartItems({...cartItems, [e.target.id]: newValue})
+  }
+
   const renderFilteredItems = (category) => {
     if(category === "ALL"){
       setCategorizedProducts(ProductsList);
@@ -65,8 +70,11 @@ function App() {
     <div className="App">
       <Header items={totalCartItems}/>
       <Routes>
+
         <Route exact path="/" element={<Home cartItems={cartItems} filterProducts={renderFilteredItems} productsList={categorizedProducts} handleClick={handleClick} handleChange={handleChange} value={value}/>} />
-        <Route exact path="/cart" element={<Cart productsList={ProductsList} items={cartItems}/>} />
+       
+        <Route exact path="/cart" element={<Cart productsList={ProductsList} items={cartItems} handleChange={handleChangeCart} />} />
+
       </Routes>
 
       <Footer/>

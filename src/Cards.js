@@ -7,9 +7,10 @@ const Cards = ({products, handleClick, handleChange, value}) => {
                     <img className="card-image" src={product.img} alt={product.name}/>
                     <p className="card-category">{product.type}</p>
                     <p className="card-title">{product.name}</p>
+                    <p className="product-price">${product.price}</p>
                     <div className="quantity-add-to-cart-container">
-                        <input type="number" min="0" id={product.id} name="quantity" value={value[product.id]} onChange={handleChange} />
-                        {<button onClick={() => handleClick(product.id)} key={product.id} className="add-to-cart">Add to cart</button>}
+                        <input className="quantity-input" type="number" min="0" id={product.id} name="quantity" value={value[product.id]} onChange={handleChange} />
+                        {<button onClick={() => handleClick(product.id)} key={product.id} className="add-to-cart">ADD TO CART</button>}
                     </div>
                 </div>
             ))}

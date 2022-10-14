@@ -7,11 +7,11 @@ const Home = ({productsList, value, handleClick, handleChange, filterProducts}) 
         <div className="app-wrapper">
             
             <div className="sidebar">
-                <h2>Products</h2>
-                <p onClick={() => filterProducts("SOFA")}>Sofas</p>
-                <p onClick={() => filterProducts("BED")}>Beds</p>
-                <p onClick={() => filterProducts("TABLE")}>Tables</p>
-                <p onClick={() => filterProducts("ALL")}>All</p>
+                <h2>PRODUCTS</h2>
+                <p onClick={() => filterProducts("SOFA")}>SOFAS</p>
+                <p onClick={() => filterProducts("BED")}>BEDS</p>
+                <p onClick={() => filterProducts("TABLE")}>TABLES</p>
+                <p onClick={() => filterProducts("ALL")}>ALL</p>
             </div>
             <Cards products={products} handleClick={handleClick} handleChange={handleChange} value={value} />
       </div>
