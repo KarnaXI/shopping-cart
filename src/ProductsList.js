@@ -7,6 +7,6 @@ const ProductsList = [
         {id: 6, name: "URSULA", price: 2750, sku: 21759, type: "BED", img: require('./images/ursula.png')},
         {id: 7, name: "ABEL", price: 1100, sku: 21919, type: "TABLE", img: require('./images/abel.png')},
         {id: 8, name: "BARNEY", price: 1400, sku: 21989, type: "TABLE", img: require('./images/barney.png')},
-        {id: 9, name: "CHARLIE", price: 1100, sku: 219924, type: "TABLE", img: require('./images/charlie.png')}
+        {id: 9, name: "CHARLIE", price: 900, sku: 219924, type: "TABLE", img: require('./images/charlie.png')}
 ]
 export default ProductsList;

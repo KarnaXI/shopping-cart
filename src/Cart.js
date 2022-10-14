@@ -67,8 +67,6 @@ const Cart = ({productsList, items, handleChange, totalCartItems}) => {
             {totalCartItems > 0 && <div className="cart-total" key={5184}>
                Total: ${getCartTotal()}
                 </div>}
-    
-
         </div>
     )
 }
